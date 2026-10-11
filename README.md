@@ -1,6 +1,6 @@
-# Portfolio — Douga Diarra
+# Portfolio — Douga dit Ibrahim Diarra
 
-Site personnel une page de **Douga Diarra**, étudiant en Licence 2 informatique à l'Université IAM (Institut Africain de Management), Bamako — développeur web & IA, fondateur de Bronbah Tech.
+Site personnel une page de **Douga dit Ibrahim Diarra**, étudiant en Licence 2 informatique à l'Université IAM (Institut Africain de Management), Bamako — développeur web & IA, fondateur de Bronbah Tech.
 
 **Projet n°12 « Portfolio et CV en ligne »** de l'atelier **IAM Code to Career** (2026, DataInsights).
 
