@@ -526,5 +526,42 @@
         window.print();
       });
     </script>
+
+    <!-- Widget Assistant IAM (projet n°11) — code maison, aucun script externe -->
+    <style>
+      #iam-widget-btn{position:fixed;right:16px;bottom:16px;z-index:9998;background:#c9a227;color:#14100a;border:0;border-radius:28px;padding:13px 20px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.28);font-family:inherit}
+      #iam-widget-btn:hover{background:#dbb636}
+      #iam-widget-panel{position:fixed;right:16px;bottom:76px;z-index:9999;width:min(390px,94vw);height:min(600px,80vh);background:#fff;border-radius:14px;box-shadow:0 14px 44px rgba(0,0,0,.35);display:none;flex-direction:column;overflow:hidden;border:1px solid #dbe2ec}
+      #iam-widget-panel.open{display:flex}
+      #iam-widget-head{background:#0b2545;color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+      #iam-widget-head .grow{flex:1}
+      #iam-widget-head a{color:#c9a227;font-size:13px;text-decoration:none;font-weight:600}
+      #iam-widget-close{background:transparent;border:0;color:#fff;font-size:19px;cursor:pointer;line-height:1;padding:2px 4px}
+      #iam-widget-frame{flex:1;border:0;width:100%}
+      @media (max-width:600px){#iam-widget-panel{right:8px;bottom:72px}}
+    </style>
+    <button id="iam-widget-btn" type="button" aria-label="Ouvrir l'assistant IAM">💬 Assistant IAM</button>
+    <div id="iam-widget-panel" role="dialog" aria-label="Assistant IAM">
+      <div id="iam-widget-head">
+        <span class="grow">Assistant IAM — Projet n°11</span>
+        <a href="https://dougadiarra7325-gif.github.io/assistant-ia-etudiants/" target="_blank" rel="noopener">Plein écran ↗</a>
+        <button id="iam-widget-close" type="button" aria-label="Fermer">✕</button>
+      </div>
+      <iframe id="iam-widget-frame" title="Assistant IA pour étudiants" data-src="https://dougadiarra7325-gif.github.io/assistant-ia-etudiants/" loading="lazy"></iframe>
+    </div>
+    <script>
+      (function () {
+        var btn = document.getElementById('iam-widget-btn');
+        var panel = document.getElementById('iam-widget-panel');
+        var frame = document.getElementById('iam-widget-frame');
+        var loaded = false;
+        function toggle() {
+          var open = panel.classList.toggle('open');
+          if (open && !loaded) { frame.src = frame.getAttribute('data-src'); loaded = true; }
+        }
+        btn.addEventListener('click', toggle);
+        document.getElementById('iam-widget-close').addEventListener('click', toggle);
+      })();
+    </script>
   </body>
 </html>
