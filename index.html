@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Portfolio — Douga Diarra</title>
+    <meta name="description" content="Portfolio de Douga Diarra — étudiant en Licence 2 Informatique à l'Université IAM de Bamako, développeur Web & IA, fondateur de Bronbah Tech." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --navy-950: #060d1f;
+        --navy-900: #0a1428;
+        --navy-800: #101f3d;
+        --navy-700: #1a2c52;
+        --gold: #c9a227;
+        --gold-bright: #e3bc45;
+        --gold-soft: #f0d98c;
+        --bg: #f7f5f0;
+        --surface: #ffffff;
+        --surface-2: #efede6;
+        --ink: #131a2a;
+        --ink-2: #46536b;
+        --line: #ddd8c9;
+        --hero-ink: #f4efe2;
+        --hero-ink-2: #b9c2d8;
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #060d1f;
+          --surface: #0d1830;
+          --surface-2: #12203f;
+          --ink: #eef0f6;
+          --ink-2: #a7b1c9;
+          --line: #24335a;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Manrope", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; line-height: 1.15; margin: 0; }
+      a { color: inherit; }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        background:
+          radial-gradient(900px 480px at 85% -10%, rgba(201,162,39,.22), transparent 60%),
+          linear-gradient(160deg, var(--navy-800) 0%, var(--navy-900) 55%, var(--navy-950) 100%);
+        color: var(--hero-ink);
+        padding: 56px 0 64px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute; inset: auto 0 0 0; height: 3px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+      .monogram {
+        width: 74px; height: 74px;
+        display: grid; place-items: center;
+        border: 1.5px solid var(--gold);
+        border-radius: 50%;
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem; font-weight: 700;
+        color: var(--gold-bright);
+        letter-spacing: .02em;
+        margin-bottom: 26px;
+        background: rgba(201,162,39,.08);
+      }
+      .hero .place {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+        color: var(--gold-soft);
+        border: 1px solid rgba(201,162,39,.45);
+        padding: 6px 14px; border-radius: 999px;
+        margin-bottom: 22px;
+      }
+      .hero h1 { font-size: clamp(2.6rem, 9vw, 4.4rem); font-weight: 800; letter-spacing: -.01em; }
+      .hero h1 .gold { color: var(--gold-bright); }
+      .hero .role {
+        margin: 18px 0 0;
+        font-size: clamp(1.02rem, 3.4vw, 1.28rem);
+        color: var(--hero-ink-2);
+        max-width: 640px; font-weight: 500;
+      }
+      .hero .role strong { color: var(--hero-ink); font-weight: 700; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 13px 22px; border-radius: 10px;
+        font-weight: 700; font-size: .95rem; text-decoration: none;
+        transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      }
+      .btn svg { width: 18px; height: 18px; flex: none; }
+      .btn-gold { background: var(--gold); color: #14100a; }
+      .btn-gold:hover { background: var(--gold-bright); transform: translateY(-2px); }
+      .btn-ghost { border: 1px solid rgba(244,239,226,.35); color: var(--hero-ink); background: rgba(255,255,255,.04); }
+      .btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); transform: translateY(-2px); }
+
+      /* ---------- Nav ---------- */
+      .nav {
+        position: sticky; top: 0; z-index: 20;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav .wrap { display: flex; gap: 4px; flex-wrap: wrap; padding-top: 0; padding-bottom: 0; }
+      @media (max-width: 560px) { .nav .wrap { justify-content: center; } .nav a { padding: 11px 9px; font-size: .84rem; } }
+      .nav a {
+        padding: 13px 12px; font-size: .88rem; font-weight: 700; text-decoration: none;
+        color: var(--ink-2); white-space: nowrap; border-bottom: 2px solid transparent;
+      }
+      .nav a:hover { color: var(--ink); border-bottom-color: var(--gold); }
+
+      /* ---------- Sections ---------- */
+      section { padding: 58px 0 8px; }
+      .kicker {
+        font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+        color: var(--gold); margin: 0 0 10px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .kicker::after { content: ""; height: 1px; width: 56px; background: var(--gold); opacity: .6; }
+      h2 { font-size: clamp(1.7rem, 5.5vw, 2.3rem); font-weight: 700; margin-bottom: 18px; }
+      .lead { font-size: 1.06rem; color: var(--ink-2); max-width: 720px; margin: 0; }
+      .lead strong { color: var(--ink); }
+
+      /* ---------- Projets ---------- */
+      .projects { display: grid; gap: 16px; margin-top: 8px; }
+      @media (min-width: 720px) { .projects { grid-template-columns: 1fr 1fr; } }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 24px;
+        display: flex; flex-direction: column; gap: 10px;
+        text-decoration: none;
+        transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+      }
+      a.card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(6,13,31,.12); }
+      .card .tag {
+        align-self: flex-start;
+        font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--gold); background: color-mix(in srgb, var(--gold) 12%, transparent);
+        padding: 4px 10px; border-radius: 999px;
+      }
+      .card h3 { font-size: 1.32rem; font-weight: 700; }
+      .card p { margin: 0; color: var(--ink-2); font-size: .96rem; flex: 1; }
+      .card .go { font-weight: 800; font-size: .9rem; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; }
+      .card .go svg { width: 15px; height: 15px; }
+      .card.soon { border-style: dashed; }
+      .card.soon .go { color: var(--ink-2); }
+
+      /* ---------- Compétences ---------- */
+      .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; padding: 0; list-style: none; }
+      .skills li {
+        background: var(--surface); border: 1px solid var(--line);
+        padding: 9px 16px; border-radius: 999px;
+        font-weight: 700; font-size: .92rem;
+      }
+      .skills li.hot { background: var(--navy-900); color: var(--gold-soft); border-color: var(--navy-900); }
+      @media (prefers-color-scheme: dark) { .skills li.hot { background: var(--gold); color: #14100a; border-color: var(--gold); } }
+
+      /* ---------- Parcours ---------- */
+      .timeline { list-style: none; margin: 10px 0 0; padding: 0; position: relative; }
+      .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+      .timeline li { position: relative; padding: 0 0 26px 34px; }
+      .timeline li::before {
+        content: ""; position: absolute; left: 0; top: 7px;
+        width: 16px; height: 16px; border-radius: 50%;
+        background: var(--bg); border: 3px solid var(--gold);
+      }
+      .timeline h3 { font-size: 1.18rem; margin-bottom: 2px; }
+      .timeline .when { font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+      .timeline p { margin: 4px 0 0; color: var(--ink-2); font-size: .96rem; max-width: 640px; }
+
+      /* ---------- CV ---------- */
+      .cv-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--gold);
+        border-radius: var(--radius);
+        padding: 30px 26px;
+        margin-top: 8px;
+      }
+      .cv-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; align-items: flex-start; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 18px; }
+      .cv-head h3 { font-size: 1.7rem; }
+      .cv-head .cv-role { color: var(--gold); font-weight: 800; font-size: .95rem; margin-top: 4px; }
+      .cv-contact { font-size: .9rem; color: var(--ink-2); text-align: right; }
+      .cv-contact a { color: var(--ink-2); }
+      @media (max-width: 560px) { .cv-contact { text-align: left; } }
+      .cv-box h4 {
+        font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+        color: var(--gold); margin: 22px 0 8px;
+      }
+      .cv-box h4:first-of-type { margin-top: 0; }
+      .cv-box p, .cv-box li { font-size: .95rem; color: var(--ink-2); }
+      .cv-box p { margin: 0 0 6px; }
+      .cv-box ul { margin: 0; padding-left: 18px; }
+      .cv-box li { margin-bottom: 3px; }
+      .cv-box .item-title { color: var(--ink); font-weight: 800; }
+      .print-btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        margin-top: 24px; padding: 13px 24px; border: none; cursor: pointer;
+        background: var(--navy-900); color: #f4efe2;
+        font-family: inherit; font-weight: 800; font-size: .95rem; border-radius: 10px;
+        transition: background .15s ease, transform .15s ease;
+      }
+      .print-btn:hover { background: var(--navy-700); transform: translateY(-2px); }
+      .print-btn svg { width: 18px; height: 18px; }
+      @media (prefers-color-scheme: dark) { .print-btn { background: var(--gold); color: #14100a; } .print-btn:hover { background: var(--gold-bright); } }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 70px;
+        background: var(--navy-950); color: var(--hero-ink-2);
+        padding: 40px 0 46px; text-align: center;
+        border-top: 3px solid var(--gold);
+      }
+      footer .name { font-family: "Playfair Display", serif; font-size: 1.4rem; color: var(--hero-ink); margin-bottom: 6px; }
+      footer a { color: var(--gold-soft); font-weight: 700; text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+      footer p { margin: 4px 0; font-size: .92rem; }
+      .foot-links { display: flex; justify-content: center; gap: 22px; margin-top: 16px; flex-wrap: wrap; }
+      .foot-links a { display: inline-flex; align-items: center; gap: 7px; font-size: .9rem; }
+      .foot-links svg { width: 16px; height: 16px; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        * { transition: none !important; }
+      }
+
+      /* ---------- Impression : uniquement le CV, format A4 ---------- */
+      @media print {
+        @page { size: A4; margin: 16mm; }
+        body { background: #fff !important; color: #131a2a !important; }
+        .hero, .nav, main section:not(#cv), footer, .print-btn { display: none !important; }
+        section#cv { padding: 0 !important; }
+        section#cv .kicker, section#cv > .wrap > h2 { display: none !important; }
+        .wrap { max-width: none; padding: 0; }
+        .cv-box { border: none; border-top: 3px solid #c9a227; border-radius: 0; padding: 0; background: #fff !important; }
+        .cv-box p, .cv-box li, .cv-contact, .cv-contact a { color: #333 !important; }
+        .cv-box .item-title { color: #131a2a !important; }
+        .cv-head .cv-role, .cv-box h4 { color: #8a6d14 !important; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <div class="wrap">
+        <div class="monogram" aria-hidden="true">DD</div>
+        <span class="place">Bamako · Mali</span>
+        <h1>Douga <span class="gold">Diarra</span></h1>
+        <p class="role">Étudiant en <strong>Licence 2 Informatique à l'Université IAM de Bamako</strong> — <strong>Développeur Web &amp; IA</strong>, fondateur de <strong>Bronbah Tech</strong>.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="https://www.linkedin.com/in/douga-diarra-1b2129390" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/dougadiarra7325-gif" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://wa.me/22373255873" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.87-9.9 9.87zm8.42-18.29A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.47-8.41z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="Sommaire">
+      <div class="wrap">
+        <a href="#a-propos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#cv">Mon CV</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ================= À PROPOS ================= -->
+      <section id="a-propos">
+        <div class="wrap">
+          <p class="kicker">À propos</p>
+          <h2>Construire des outils utiles, ici, au Mali</h2>
+          <p class="lead">Passionné par le <strong>développement web</strong> et l'<strong>intelligence artificielle</strong>, je construis des outils concrets pour les <strong>commerces</strong>, les <strong>jeunes</strong> et les <strong>étudiants</strong> du Mali : une plateforme de cybersécurité, un assistant WhatsApp pour les boutiques, une application pour créer son CV, un carnet de dettes numérique pour les boutiquiers.</p>
+          <p class="lead" style="margin-top:14px;">En parallèle de ma Licence 2 à l'Université IAM, je participe à l'atelier <strong>IAM Code to Career (2026)</strong>, piloté par <strong>DataInsights</strong> : pratique industrielle, travail en équipe, code versionné sur GitHub et préparation au recrutement IT. Mon objectif : décrocher un stage en développement et continuer à lancer des produits qui servent vraiment.</p>
+        </div>
+      </section>
+
+      <!-- ================= PROJETS ================= -->
+      <section id="projets">
+        <div class="wrap">
+          <p class="kicker">Projets</p>
+          <h2>Projets réalisés et en cours</h2>
+          <div class="projects">
+
+            <a class="card" href="https://cyberguard-mali.lovable.app" target="_blank" rel="noopener">
+              <span class="tag">Cybersécurité · IA</span>
+              <h3>CyberGuard AI</h3>
+              <p>Plateforme de cybersécurité pensée pour le Mali : diagnostic de sécurité, analyse de liens suspects, alertes expliquées en langage simple et abonnements adaptés aux particuliers, créateurs et PME.</p>
+              <span class="go">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+
+            <a class="card" href="https://github.com/dougadiarra7325-gif/bronbah-whatsapp-agent" target="_blank" rel="noopener">
+              <span class="tag">API WhatsApp · Meta</span>
+              <h3>Assistant WhatsApp Bronbah Tech</h3>
+              <p>Agent de vente et de support client sur l'API WhatsApp Business de Meta : catalogue de formations, réponses automatiques aux clients, qualification des demandes et passage de relais à un humain.</p>
+              <span class="go">Voir le code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+
+            <a class="card" href="https://muse.ai/s/cv-pro-cxv6vbxmw7nl8" target="_blank" rel="noopener">
+              <span class="tag">Web app · Emploi</span>
+              <h3>CV Pro</h3>
+              <p>Application qui aide les jeunes à créer un CV professionnel et une lettre de motivation : modèles propres, aide à la rédaction intégrée et export en PDF, prête pour candidater.</p>
+              <span class="go">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+
+            <a class="card" href="https://muse.ai/s/carnet-de-dettes-xzs6vb7xjxyxcxnxf" target="_blank" rel="noopener">
+              <span class="tag">Web app · Commerce</span>
+              <h3>Carnet de dettes pour boutiquiers</h3>
+              <p>Le carnet de crédit des boutiques de quartier, en version numérique : suivi des dettes clients par boutique et relances WhatsApp en un toucher, directement depuis le téléphone.</p>
+              <span class="go">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+
+            <div class="card soon">
+              <span class="tag">Projet d'atelier · IAM Code to Career</span>
+              <h3>Emploi Mali</h3>
+              <p>Portail d'offres d'emploi au Mali avec espaces candidat et recruteur — projet d'équipe de l'atelier IAM Code to Career (n°4 du programme). En cours de construction avec mon équipe ; la démo sera présentée à la fin de l'atelier.</p>
+              <span class="go">Réalisé — portail fonctionnel (comptes candidat et recruteur, candidatures, alertes)</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= COMPÉTENCES ================= -->
+      <section id="competences">
+        <div class="wrap">
+          <p class="kicker">Compétences</p>
+          <h2>Savoir-faire</h2>
+          <ul class="skills">
+            <li class="hot">HTML</li>
+            <li class="hot">CSS</li>
+            <li class="hot">JavaScript</li>
+            <li>Python</li>
+            <li>PHP</li>
+            <li>SQL</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Agents IA</li>
+            <li>Community management</li>
+            <li>Formation &amp; coaching</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= PARCOURS ================= -->
+      <section id="parcours">
+        <div class="wrap">
+          <p class="kicker">Parcours</p>
+          <h2>Formation &amp; expérience</h2>
+          <ol class="timeline">
+            <li>
+              <span class="when">En cours</span>
+              <h3>Licence en informatique — Université IAM, Bamako</h3>
+              <p>Étudiant en Licence 2 à l'Institut Africain de Management (IAM). Formation en programmation, bases de données et développement web.</p>
+            </li>
+            <li>
+              <span class="when">2026</span>
+              <h3>Atelier IAM Code to Career — DataInsights</h3>
+              <p>Atelier intensif de pratique industrielle et de recrutement IT : programmation (Python, JavaScript, Java, PHP, SQL), agents IA, personal branding, entretiens techniques et projet d'équipe orienté résultats, présenté en démonstration finale.</p>
+            </li>
+            <li>
+              <span class="when">En cours</span>
+              <h3>Fondateur — Bronbah Tech, Bamako</h3>
+              <p>Création et vente de 11 formations en informatique, conception d'applications (CyberGuard AI, CV Pro, Carnet de dettes), assistant WhatsApp pour commerces et services de community management pour les petits commerces de Bamako.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ================= CV ================= -->
+      <section id="cv">
+        <div class="wrap">
+          <p class="kicker">Curriculum vitæ</p>
+          <h2>Mon CV</h2>
+          <div class="cv-box" id="cv-print">
+            <div class="cv-head">
+              <div>
+                <h3>Douga Diarra</h3>
+                <p class="cv-role">Développeur Web &amp; IA — Fondateur de Bronbah Tech</p>
+              </div>
+              <div class="cv-contact">
+                Bamako, Mali<br />
+                <a href="mailto:dougadiarra7325@gmail.com">dougadiarra7325@gmail.com</a><br />
+                <a href="https://www.linkedin.com/in/douga-diarra-1b2129390">linkedin.com/in/douga-diarra-1b2129390</a><br />
+                <a href="https://github.com/dougadiarra7325-gif">github.com/dougadiarra7325-gif</a>
+              </div>
+            </div>
+
+            <h4>Profil</h4>
+            <p>Étudiant en Licence 2 informatique à l'Université IAM de Bamako, passionné par le développement web et l'intelligence artificielle. Je construis des outils concrets pour les commerces, les jeunes et les étudiants du Mali. Participant à l'atelier IAM Code to Career (2026, DataInsights). Objectif : un stage en développement / IT.</p>
+
+            <h4>Expérience</h4>
+            <p><span class="item-title">Fondateur &amp; Coach en informatique — Bronbah Tech, Bamako</span> (indépendant, en cours)</p>
+            <ul>
+              <li>Création et vente de 11 formations en informatique : HTML, CSS, JavaScript, PHP, C, C++, création de sites web, CapCut, intelligence artificielle, ChatGPT, Canva.</li>
+              <li>Conception d'applications : CyberGuard AI (cybersécurité), CV Pro (CV et lettres de motivation), Carnet de dettes pour boutiquiers.</li>
+              <li>Développement d'un assistant WhatsApp pour les commerces (API Meta) : catalogue, réponses clients, suivi des demandes.</li>
+              <li>Services de community management pour les petits commerces de Bamako.</li>
+              <li>Accompagnement et coaching de débutants en informatique.</li>
+            </ul>
+
+            <h4>Projets</h4>
+            <ul>
+              <li><span class="item-title">CyberGuard AI</span> — plateforme de cybersécurité pour le Mali : diagnostic, analyse de liens suspects, alertes et abonnements. cyberguard-mali.lovable.app</li>
+              <li><span class="item-title">Assistant WhatsApp Bronbah Tech</span> — agent de vente et de support sur l'API WhatsApp Business de Meta.</li>
+              <li><span class="item-title">CV Pro</span> — application de création de CV professionnels et de lettres de motivation, export PDF.</li>
+              <li><span class="item-title">Carnet de dettes pour boutiquiers</span> — suivi des crédits clients avec relances WhatsApp.</li>
+              <li><span class="item-title">Emploi Mali</span> — portail d'offres d'emploi (projet d'équipe, atelier IAM Code to Career).</li>
+            </ul>
+
+            <h4>Formation</h4>
+            <p><span class="item-title">Licence en informatique — Université IAM (Institut Africain de Management), Bamako</span> — Licence 2 en cours.</p>
+            <p><span class="item-title">Atelier IAM Code to Career (2026)</span> — piloté par DataInsights : pratique industrielle et recrutement IT, programmation (Python, JavaScript, PHP, SQL), agents IA, personal branding, projet d'équipe avec code versionné sur GitHub.</p>
+
+            <h4>Compétences</h4>
+            <p>HTML · CSS · JavaScript · Python · PHP · SQL · Git · GitHub · Agents IA · Community management · Formation et coaching</p>
+
+            <h4>Langues</h4>
+            <p>Français (courant) · Bambara (courant) · Anglais (en apprentissage)</p>
+          </div>
+          <button class="print-btn" type="button" id="print-cv">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+            Imprimer / Télécharger en PDF
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="wrap">
+        <p class="name">Douga Diarra</p>
+        <p>© 2026 Douga Diarra — Bamako, Mali</p>
+        <p><a href="mailto:dougadiarra7325@gmail.com">dougadiarra7325@gmail.com</a></p>
+        <div class="foot-links">
+          <a href="https://www.linkedin.com/in/douga-diarra-1b2129390" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/dougadiarra7325-gif" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a href="https://wa.me/22373255873" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.87-9.9 9.87zm8.42-18.29A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.47-8.41z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('print-cv').addEventListener('click', function () {
+        window.print();
+      });
+    </script>
+  </body>
+</html>
